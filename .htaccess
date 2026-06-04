@@ -1,0 +1,30 @@
+AddType application/xml .xml
+
+RewriteEngine On
+
+# ==========================
+# FORCE HTTPS + REMOVE WWW
+# ==========================
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\.shivkrupatensile\.com [NC]
+RewriteRule ^(.*)$ https://shivkrupatensile.com/$1 [R=301,L]
+
+RewriteBase /
+
+# ==========================
+# ALLOW ROBOTS & SITEMAP
+# ==========================
+RewriteRule ^robots\.txt$ - [L]
+RewriteRule ^sitemap\.xml$ - [L]
+
+# ==========================
+# ALLOW EXISTING FILES & FOLDERS
+# ==========================
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# ==========================
+# REDIRECT ALL INVALID URLS TO HOMEPAGE
+# ==========================
+RewriteRule ^.*$ https://shivkrupatensile.com/ [R=301,L]

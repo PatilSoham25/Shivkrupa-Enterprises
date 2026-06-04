@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+https://shivkrupatensile.com/sitemap.xml
